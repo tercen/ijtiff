@@ -127,10 +127,33 @@ static void TIFF_add_tags(TIFF *tiff, SEXP res) {
     setAttr(res, "document_name", mkString(c));
   if (TIFFGetField(tiff, TIFFTAG_DATETIME, &c) && c)
     setAttr(res, "date_time", mkString(c));
-  /* custom tags
-  if (TIFFGetField(tiff, 65050, &c) && c)
-    setAttr(res, "65050", mkString(c));
-  */
+
+  // start custom tags
+  uint32 count;
+  if (TIFFGetField(tiff, 65050, &count, &c) && c)
+    setAttr(res, "barcode", mkString(c));
+  if (TIFFGetField(tiff, 65051, &count, &c) && c)
+    setAttr(res, "col", mkString(c));
+  if (TIFFGetField(tiff, 65052, &count, &c) && c)
+    setAttr(res, "cycle", mkString(c));
+  if (TIFFGetField(tiff, 65053, &count, &c) && c)
+    setAttr(res, "exposure time", mkString(c));
+  if (TIFFGetField(tiff, 65054, &count, &c) && c)
+    setAttr(res, "filter", mkString(c));
+  if (TIFFGetField(tiff, 65055, &count, &c) && c)
+    setAttr(res, "ps12", mkString(c));
+  if (TIFFGetField(tiff, 65058, &count, &c) && c)
+    setAttr(res, "row", mkString(c));
+  if (TIFFGetField(tiff, 65059, &count, &c) && c)
+    setAttr(res, "temperature", mkString(c));
+  if (TIFFGetField(tiff, 65060, &count, &c) && c)
+    setAttr(res, "timestamp", mkString(c));
+  if (TIFFGetField(tiff, 65061, &count, &c) && c)
+    setAttr(res, "instrument unit", mkString(c));
+  if (TIFFGetField(tiff, 65062, &count, &c) && c)
+    setAttr(res, "protocol id", mkString(c));
+  //end custom tags
+
   if (TIFFGetField(tiff, TIFFTAG_IMAGEDESCRIPTION, &c) && c)
     setAttr(res, "description", mkString(c));
   if (TIFFGetField(tiff, TIFFTAG_SOFTWARE, &c) && c)
