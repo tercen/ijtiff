@@ -127,6 +127,10 @@ static void TIFF_add_tags(TIFF *tiff, SEXP res) {
     setAttr(res, "document_name", mkString(c));
   if (TIFFGetField(tiff, TIFFTAG_DATETIME, &c) && c)
     setAttr(res, "date_time", mkString(c));
+  /* custom tags
+  if (TIFFGetField(tiff, 65050, &c) && c)
+    setAttr(res, "65050", mkString(c));
+  */
   if (TIFFGetField(tiff, TIFFTAG_IMAGEDESCRIPTION, &c) && c)
     setAttr(res, "description", mkString(c));
   if (TIFFGetField(tiff, TIFFTAG_SOFTWARE, &c) && c)
