@@ -70,7 +70,7 @@ install.packages("ijtiff")
 You can install the development version from GitHub with:
 
 ``` r
-devtools::install_github("ropensci/ijtiff")
+remotes::install_github("tercen/ijtiff")
 ```
 
 ## Acknowledgement
