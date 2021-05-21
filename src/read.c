@@ -151,7 +151,7 @@ static void TIFF_add_tags(TIFF *tiff, SEXP res) {
   if (TIFFGetField(tiff, 65061, &count, &c) && c)
     setAttr(res, "instrument unit", mkString(c));
   if (TIFFGetField(tiff, 65062, &count, &c) && c)
-    setAttr(res, "protocol id", mkString(c));
+    setAttr(res, "run id", mkString(c));
   //end custom tags
 
   if (TIFFGetField(tiff, TIFFTAG_IMAGEDESCRIPTION, &c) && c)
